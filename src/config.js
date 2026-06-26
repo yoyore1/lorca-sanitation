@@ -88,13 +88,13 @@ export const SITE = {
   ],
 
   // Before / After comparison tiles (the signature slider) ------------------
-  // Until real matched pairs are supplied, the "before" is generated from the
-  // "after" photo with a grime CSS filter (clearly footnoted on the site).
+  // `after` = the clean photo, `before` = the matching dirty photo. When
+  // `before` is omitted, the slider fakes it with a CSS grime filter.
   beforeAfter: [
-    { id: "driveway",  img: "driveway",   label: "Driveway" },
-    { id: "patio",     img: "patio",      label: "Patio" },
-    { id: "house",     img: "house-wash", label: "Siding" },
-    { id: "commercial", img: "commercial", label: "Storefront" },
+    { id: "driveway",   label: "Driveway",   after: "driveway-after" },                        // before: dirty driveway pending
+    { id: "patio",      label: "Patio",      after: "patio",      before: "patio-before" },
+    { id: "house",      label: "Siding",     after: "house-wash", before: "house-wash-before" },
+    { id: "commercial", label: "Storefront", after: "commercial", before: "commercial-before" },
   ],
 
   // Reviews — CONFIRM/replace with real reviews (placeholders) ---------------

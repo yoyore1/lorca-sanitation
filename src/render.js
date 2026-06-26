@@ -63,18 +63,21 @@ function gallery(site) {
 
 function beforeAfter(site) {
   const tiles = site.beforeAfter;
+  const afterOf = (t) => esc(t.after || t.img);
+  const beforeOf = (t) => esc(t.before || t.after || t.img);
+  const isReal = (t) => Boolean(t.before);
   const first = tiles[0];
   const thumbs = tiles
     .map(
-      (t, i) => `<button class="ba__thumb${i === 0 ? " is-active" : ""}" type="button" data-img="${esc(t.img)}" data-label="${esc(t.label)}" aria-pressed="${i === 0}">${esc(t.label)}</button>`
+      (t, i) => `<button class="ba__thumb${i === 0 ? " is-active" : ""}" type="button" data-after="${afterOf(t)}" data-before="${beforeOf(t)}" data-real="${isReal(t) ? "1" : ""}" data-label="${esc(t.label)}" aria-pressed="${i === 0}">${esc(t.label)}</button>`
     )
     .join("");
   return `
-    <div class="ba" data-ba>
+    <div class="ba${isReal(first) ? " is-real" : ""}" data-ba>
       <figure class="ba__stage">
-        <img class="ba__img ba__img--after" src="/assets/img/${esc(first.img)}.jpg" alt="After: a freshly cleaned surface" data-ph="${esc(first.label)} — after" width="1040" height="650" decoding="async">
+        <img class="ba__img ba__img--after" src="/assets/img/${afterOf(first)}.jpg" alt="After: a freshly cleaned surface" data-ph="${esc(first.label)} — after" width="1040" height="650" decoding="async">
         <div class="ba__before" data-ba-before>
-          <img class="ba__img ba__img--before" src="/assets/img/${esc(first.img)}.jpg" alt="Before: the same surface with built-up grime" data-ph="${esc(first.label)} — before" width="1040" height="650" decoding="async" aria-hidden="true">
+          <img class="ba__img ba__img--before" src="/assets/img/${beforeOf(first)}.jpg" alt="Before: the same surface with built-up grime" data-ph="${esc(first.label)} — before" width="1040" height="650" decoding="async" aria-hidden="true">
         </div>
         <span class="ba__tag ba__tag--before">Before</span>
         <span class="ba__tag ba__tag--after">After</span>
@@ -84,7 +87,7 @@ function beforeAfter(site) {
         <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Before / after comparison slider" data-ba-range>
       </figure>
       <div class="ba__thumbs" role="group" aria-label="Choose a surface to compare">${thumbs}</div>
-      <p class="ba__note">Before view shown for reference; after photos are real ${esc(site.brand.shortName)} jobs.</p>
+      <p class="ba__note">Drag to compare — real ${esc(site.brand.shortName)} before &amp; after jobs.</p>
     </div>`;
 }
 
