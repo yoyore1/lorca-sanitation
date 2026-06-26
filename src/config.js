@@ -1,15 +1,15 @@
 // ============================================================================
 //  SINGLE SOURCE OF TRUTH — edit this file to make the site yours.
-//  Client: Lorca Sanitation (GTA). Real business details pulled from
+//  Client: Lorca Restoration (GTA). Real business details pulled from
 //  lorcasanitation.net; images are template placeholders until real photos
 //  arrive. Lines marked CONFIRM are placeholders the owner should verify.
 // ============================================================================
 
 export const SITE = {
   brand: {
-    name: "Lorca Sanitation",
+    name: "Lorca Restoration",
     shortName: "Lorca",
-    legalName: "Lorca Sanitation",
+    legalName: "Lorca Restoration",
     tagline: "Exterior cleaning & pressure washing, done right.",
     // Contact ----------------------------------------------------------------
     phone: "(647) 667-8279",
@@ -110,7 +110,7 @@ export const SITE = {
     { q: "How much does pressure washing cost?", a: "It depends on the surface, size, and how much buildup we're removing. Tell us about your property and we'll send a clear, itemized price — no vague ranges, no hidden fees, and no surprises on the day." },
     { q: "Is the quote really free?", a: "Completely. No fee, no obligation, no high-pressure pitch. We assess your property, send a fixed price, and you decide. That's it." },
     { q: "Will pressure washing damage my siding or surfaces?", a: "Not with us. We use controlled, heated pressure and the right techniques for each surface — delicate areas like siding and soffits are cleaned gently so we never force water where it doesn't belong." },
-    { q: "Are you insured?", a: "Yes — Lorca Sanitation is fully insured. We're happy to provide proof of insurance before we step on your property." },
+    { q: "Are you insured?", a: "Yes — Lorca Restoration is fully insured. We're happy to provide proof of insurance before we step on your property." },
     { q: "Do I need to be home?", a: "Not necessarily. As long as we have access to the areas and an outdoor water source, many customers are at work while we clean. We can arrange early-morning or off-peak times too." },
     { q: "What if I'm not happy with the result?", a: "Then we're not done. If a spot doesn't meet our standard, we'll come back and make it right. You only pay when you're happy with the clean." },
   ],
@@ -133,7 +133,7 @@ export const SITE = {
 
   // SEO ---------------------------------------------------------------------
   seo: {
-    title: "Lorca Sanitation | Pressure Washing & Exterior Cleaning in the GTA",
+    title: "Lorca Restoration | Pressure Washing & Exterior Cleaning in the GTA",
     description:
       "Professional pressure washing & exterior cleaning for homes and businesses across the GTA. Driveways, siding, patios, storefronts & dumpster sanitizing. Free, no-obligation quotes.",
     url: "https://www.lorcasanitation.net",
