@@ -60,10 +60,10 @@ export const SITE = {
   // `after` = the clean photo, `before` = the matching dirty photo. When
   // `before` is omitted, the slider fakes it with a CSS grime filter.
   beforeAfter: [
-    { id: "driveway",   label: "Driveway",   after: "driveway-after", before: "driveway-before" },
-    { id: "patio",      label: "Patio",      after: "patio",      before: "patio-before" },
-    { id: "house",      label: "Siding",     after: "house-wash", before: "house-wash-before" },
-    { id: "commercial", label: "Storefront", after: "commercial", before: "commercial-before" },
+    { id: "driveway", label: "Driveway",        after: "driveway-after", before: "driveway-before" },
+    { id: "house",    label: "Siding",          after: "house-wash",     before: "house-wash-before" },
+    { id: "painting", label: "Interior Paint",  after: "painting-after", before: "painting-before" },
+    { id: "deck",     label: "Deck Staining",   after: "deck-after",     before: "deck-before" },
   ],
 
   // Reviews — CONFIRM/replace with real reviews (placeholders) ---------------
