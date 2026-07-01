@@ -1,12 +1,13 @@
-// Builds the static site into /dist for Vercel: renders index.html from config,
-// copies assets, writes robots.txt + sitemap.xml. (The estimate form is handled
-// by the serverless function in /api/estimate.js.)
+// Builds the static site into /dist for Vercel: renders index.html + all
+// /services/ pages from config + the services catalog, copies assets, writes
+// robots.txt + sitemap.xml. (The estimate form is handled by the serverless
+// function in /api/estimate.js.)
 import { mkdir, writeFile, cp, rm } from "node:fs/promises";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { SITE } from "../src/config.js";
-import { renderPage } from "../src/render.js";
+import { renderPage, renderServicePage, renderServicesHub, allCategorySlugs } from "../src/render.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -15,17 +16,34 @@ const DIST = path.join(ROOT, "dist");
 await rm(DIST, { recursive: true, force: true });
 await mkdir(DIST, { recursive: true });
 
+// no nonce: static CSP allows the one inline config script
 const template = readFileSync(path.join(ROOT, "src", "index.template.html"), "utf8");
-const html = renderPage(template, SITE); // no nonce: static CSP allows the one inline config script
-await writeFile(path.join(DIST, "index.html"), html);
+await writeFile(path.join(DIST, "index.html"), renderPage(template, SITE));
+
+// /services/ hub + one page per category
+const serviceTemplate = readFileSync(path.join(ROOT, "src", "service-page.template.html"), "utf8");
+await mkdir(path.join(DIST, "services"), { recursive: true });
+await writeFile(path.join(DIST, "services", "index.html"), renderServicesHub(serviceTemplate, SITE));
+
+const slugs = allCategorySlugs();
+for (const slug of slugs) {
+  const dir = path.join(DIST, "services", slug);
+  await mkdir(dir, { recursive: true });
+  await writeFile(path.join(dir, "index.html"), renderServicePage(serviceTemplate, SITE, slug));
+}
 
 await cp(path.join(ROOT, "public", "assets"), path.join(DIST, "assets"), { recursive: true });
 
 await writeFile(path.join(DIST, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${SITE.seo.url}/sitemap.xml\n`);
 const today = new Date().toISOString().slice(0, 10);
+const urls = [
+  `  <url><loc>${SITE.seo.url}/</loc><lastmod>${today}</lastmod><priority>1.0</priority></url>`,
+  `  <url><loc>${SITE.seo.url}/services/</loc><lastmod>${today}</lastmod><priority>0.9</priority></url>`,
+  ...slugs.map((s) => `  <url><loc>${SITE.seo.url}/services/${s}/</loc><lastmod>${today}</lastmod><priority>0.8</priority></url>`),
+].join("\n");
 await writeFile(
   path.join(DIST, "sitemap.xml"),
-  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${SITE.seo.url}/</loc><lastmod>${today}</lastmod><priority>1.0</priority></url>\n</urlset>\n`
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
 );
 
-console.log("Built static site -> dist/ (index.html, assets/, robots.txt, sitemap.xml)");
+console.log(`Built static site -> dist/ (index.html, services hub + ${slugs.length} category pages, assets/, robots.txt, sitemap.xml)`);

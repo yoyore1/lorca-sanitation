@@ -12,13 +12,14 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { SITE } from "./src/config.js";
-import { renderPage } from "./src/render.js";
+import { renderPage, renderServicePage, renderServicesHub, allCategorySlugs } from "./src/render.js";
 import { insertLead, listLeads, countLeads, dbInfo } from "./src/db.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3000;
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN || crypto.randomBytes(12).toString("hex");
 const TEMPLATE = readFileSync(path.join(__dirname, "src", "index.template.html"), "utf8");
+const SERVICE_TEMPLATE = readFileSync(path.join(__dirname, "src", "service-page.template.html"), "utf8");
 
 const app = express();
 app.disable("x-powered-by");
@@ -67,6 +68,18 @@ app.use(
 app.get("/", (req, res) => {
   res.set("Cache-Control", "no-cache");
   res.type("html").send(renderPage(TEMPLATE, SITE, { nonce: res.locals.nonce }));
+});
+
+// ---- Services hub + category pages ------------------------------------------
+app.get(["/services", "/services/"], (req, res) => {
+  res.set("Cache-Control", "no-cache");
+  res.type("html").send(renderServicesHub(SERVICE_TEMPLATE, SITE, { nonce: res.locals.nonce }));
+});
+app.get(["/services/:slug", "/services/:slug/"], (req, res, next) => {
+  const html = renderServicePage(SERVICE_TEMPLATE, SITE, req.params.slug, { nonce: res.locals.nonce });
+  if (!html) return next();
+  res.set("Cache-Control", "no-cache");
+  res.type("html").send(html);
 });
 
 // ---- Lead capture ----------------------------------------------------------
@@ -200,8 +213,13 @@ app.get("/robots.txt", (req, res) => {
 });
 app.get("/sitemap.xml", (req, res) => {
   const today = new Date().toISOString().slice(0, 10);
+  const urls = [
+    `  <url><loc>${SITE.seo.url}/</loc><lastmod>${today}</lastmod><priority>1.0</priority></url>`,
+    `  <url><loc>${SITE.seo.url}/services/</loc><lastmod>${today}</lastmod><priority>0.9</priority></url>`,
+    ...allCategorySlugs().map((s) => `  <url><loc>${SITE.seo.url}/services/${s}/</loc><lastmod>${today}</lastmod><priority>0.8</priority></url>`),
+  ].join("\n");
   res.type("application/xml").send(
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${SITE.seo.url}/</loc><lastmod>${today}</lastmod><priority>1.0</priority></url>\n</urlset>\n`
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
   );
 });
 

@@ -54,8 +54,31 @@
       toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     };
     toggle.addEventListener("click", () => setOpen(toggle.getAttribute("aria-expanded") !== "true"));
-    $$(".nav__drawer-link, .nav__drawer-actions a", drawer).forEach((a) => a.addEventListener("click", () => setOpen(false)));
+    // close only when a real link is tapped (not the accordion summaries)
+    $$("a", drawer).forEach((a) => a.addEventListener("click", () => setOpen(false)));
     addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
+  }
+
+  /* ---------- services mega-menu (desktop) ---------- */
+  const menu = $("[data-menu]");
+  if (menu) {
+    const btn = $("[data-menu-btn]", menu);
+    const panel = $("[data-menu-panel]", menu);
+    let hoverTimer;
+    const setMenu = (open) => {
+      menu.classList.toggle("is-open", open);
+      btn.setAttribute("aria-expanded", String(open));
+      if (panel) panel.hidden = false; // visibility handled in CSS so it can animate
+    };
+    btn.addEventListener("click", () => setMenu(!menu.classList.contains("is-open")));
+    // hover intent (pointer devices only)
+    if (matchMedia("(hover: hover)").matches) {
+      menu.addEventListener("mouseenter", () => { clearTimeout(hoverTimer); setMenu(true); });
+      menu.addEventListener("mouseleave", () => { hoverTimer = setTimeout(() => setMenu(false), 180); });
+    }
+    addEventListener("click", (e) => { if (!menu.contains(e.target)) setMenu(false); });
+    addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+    menu.addEventListener("focusout", (e) => { if (!menu.contains(e.relatedTarget)) setMenu(false); });
   }
 
   /* ---------- scroll reveals ---------- */
@@ -207,7 +230,7 @@
         });
         const data = await res.json().catch(() => ({}));
         if (res.ok && data.ok) {
-          setStatus("Got it — thanks! Joshua or someone on the crew will text or call you shortly, usually within the hour.", "ok");
+          setStatus("Got it — thanks! Someone on the Lorca crew will text or call you shortly, usually within the hour.", "ok");
           form.reset();
         } else {
           setStatus(data.error || "Hmm, that didn't go through. Mind trying again, or just call us?", "err");
