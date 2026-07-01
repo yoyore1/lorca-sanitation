@@ -38,6 +38,14 @@ const img = (file, alt, label, w, h, cls = "", eager = false) =>
 // ---------------------------------------------------------------------------
 const PHONE_ICON = `<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1z"/></svg>`;
 
+// Icon + real HTML text (not the raster logo's fine-print tagline, which pixelates
+// into illegibility once scaled down for a navbar/footer) — stays crisp at any size.
+function brandMark(site, { light = false } = {}) {
+  const suffix = site.brand.name.replace(site.brand.shortName, "").trim();
+  return `<img class="brand__icon${light ? " brand__icon--light" : ""}" src="/assets/img/logo-icon.png" alt="" width="500" height="194" decoding="async">
+        <span class="brand__text${light ? " brand__text--light" : ""}"><strong>${esc(site.brand.shortName)}</strong><em>${esc(suffix)}</em></span>`;
+}
+
 function headerHtml(site) {
   const megaCols = FAMILIES.map(
     (f) => `
@@ -63,7 +71,7 @@ function headerHtml(site) {
   <header class="site-header" data-header>
     <div class="container nav">
       <a class="brand" href="/" aria-label="${esc(site.brand.name)} home">
-        <img class="brand__logo" src="/assets/img/logo-nav.png" alt="${esc(site.brand.name)}" width="851" height="485" decoding="async">
+        ${brandMark(site)}
       </a>
 
       <nav class="nav__links" aria-label="Primary">
@@ -120,7 +128,7 @@ function footerHtml(site, year) {
     <div class="container footer__top footer__top--wide">
       <div class="footer__brand">
         <a class="brand brand--light" href="/">
-          <img class="foot__logo" src="/assets/img/logo.png" alt="${esc(site.brand.name)}" width="851" height="552" loading="lazy" decoding="async">
+          ${brandMark(site, { light: true })}
         </a>
         <p class="footer__tagline">${esc(site.brand.tagline)}</p>
         <a class="footer__cta" href="tel:${esc(site.brand.phoneHref)}">${esc(site.brand.phone)}</a>
