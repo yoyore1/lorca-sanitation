@@ -63,8 +63,7 @@ function headerHtml(site) {
   <header class="site-header" data-header>
     <div class="container nav">
       <a class="brand" href="/" aria-label="${esc(site.brand.name)} home">
-        <span class="brand__dot" aria-hidden="true"></span>
-        <span class="brand__name">${esc(site.brand.shortName)}</span>
+        <img class="brand__logo" src="/assets/img/logo.png" alt="${esc(site.brand.name)}" width="851" height="552" decoding="async">
       </a>
 
       <nav class="nav__links" aria-label="Primary">
@@ -121,8 +120,7 @@ function footerHtml(site, year) {
     <div class="container footer__top footer__top--wide">
       <div class="footer__brand">
         <a class="brand brand--light" href="/">
-          <span class="brand__dot" aria-hidden="true"></span>
-          <span class="brand__name">${esc(site.brand.shortName)}</span>
+          <img class="foot__logo" src="/assets/img/logo.png" alt="${esc(site.brand.name)}" width="851" height="552" loading="lazy" decoding="async">
         </a>
         <p class="footer__tagline">${esc(site.brand.tagline)}</p>
         <a class="footer__cta" href="tel:${esc(site.brand.phoneHref)}">${esc(site.brand.phone)}</a>

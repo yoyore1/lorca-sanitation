@@ -140,10 +140,9 @@ ul, ol { list-style: none; padding: 0; }
   box-shadow: 0 4px 24px rgb(var(--shadow-color) / .05);
 }
 .nav { display: flex; align-items: center; gap: 1.5rem; height: 72px; }
-.brand { display: inline-flex; align-items: center; gap: .55rem; font-family: var(--display); font-weight: 500; font-size: 1.4rem; letter-spacing: -0.02em; color: var(--ink); }
-.brand__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px var(--gold-tint); }
-.brand--light, .brand--light .brand__name { color: var(--bg); }
-.brand--light .brand__dot { box-shadow: 0 0 0 4px rgb(200 162 75 / .18); }
+.brand { display: inline-flex; align-items: center; gap: .55rem; }
+.brand__logo { height: 42px; width: auto; display: block; }
+.footer__brand .foot__logo { height: 88px; width: auto; display: block; background: #fff; border-radius: 10px; padding: 10px 14px; }
 
 .nav__links { display: flex; gap: 1.9rem; margin-left: auto; }
 .nav__link { font-weight: 500; font-size: .95rem; color: var(--ink-soft); position: relative; padding: .3rem 0; }
