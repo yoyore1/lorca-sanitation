@@ -1,15 +1,15 @@
 // ============================================================================
 //  SINGLE SOURCE OF TRUTH — edit this file to make the site yours.
-//  Client: Lorca Restoration (GTA). Real business details pulled from
+//  Client: Lorca Restoration & Contracting (GTA). Real business details pulled from
 //  lorcasanitation.net; images are template placeholders until real photos
 //  arrive. Lines marked CONFIRM are placeholders the owner should verify.
 // ============================================================================
 
 export const SITE = {
   brand: {
-    name: "Lorca Restoration",
+    name: "Lorca Restoration & Contracting",
     shortName: "Lorca",
-    legalName: "Lorca Restoration",
+    legalName: "Lorca Restoration & Contracting",
     tagline: "Home renovations & exterior restoration, done right.",
     // Contact ----------------------------------------------------------------
     phone: "(647) 667-8279",
@@ -79,7 +79,7 @@ export const SITE = {
     { q: "How much does a job like mine cost?", a: "It depends on the scope — a paint touch-up prices very differently from a basement build-out or a full interlock patio. Tell us what you need and we'll send a clear, itemized price — no vague ranges, no hidden fees, and no surprises on the day." },
     { q: "Is the quote really free?", a: "Completely. No fee, no obligation, no high-pressure pitch. We look at the job, send a fixed price, and you decide. That's it." },
     { q: "Do you really do both renovations and exterior work?", a: "Yes — that's the whole point of Lorca. One insured, careful crew for interior painting, flooring, kitchens and baths, plus decks, fences, landscaping, hardscaping and pressure washing. One number to call, one standard of work." },
-    { q: "Are you insured?", a: "Yes — Lorca Restoration is fully insured. We're happy to provide proof of insurance before we step on your property." },
+    { q: "Are you insured?", a: "Yes — Lorca Restoration & Contracting is fully insured. We're happy to provide proof of insurance before we step on your property." },
     { q: "Do I need to be home while you work?", a: "Not necessarily. For exterior work we just need access and a water source; for interior work we'll agree on access up front. Many customers are at work while we're on site — early-morning and off-peak times available too." },
     { q: "What if I'm not happy with the result?", a: "Then we're not done. If anything doesn't meet our standard, we'll come back and make it right. You only pay when you're happy with the work." },
   ],
@@ -103,7 +103,7 @@ export const SITE = {
 
   // SEO ---------------------------------------------------------------------
   seo: {
-    title: "Lorca Restoration | Home Renovations & Exterior Restoration in the GTA",
+    title: "Lorca Restoration & Contracting | Home Renovations & Exterior Restoration in the GTA",
     description:
       "One careful crew for your whole property: interior painting, flooring, kitchens & baths, drywall and carpentry — plus decks, fences, landscaping, hardscaping and pressure washing across the GTA. Free itemized quotes.",
     url: "https://www.lorcasanitation.net",
