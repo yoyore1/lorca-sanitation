@@ -63,7 +63,7 @@ function headerHtml(site) {
   <header class="site-header" data-header>
     <div class="container nav">
       <a class="brand" href="/" aria-label="${esc(site.brand.name)} home">
-        <img class="brand__logo" src="/assets/img/logo.png" alt="${esc(site.brand.name)}" width="851" height="552" decoding="async">
+        <img class="brand__logo" src="/assets/img/logo-nav.png" alt="${esc(site.brand.name)}" width="851" height="485" decoding="async">
       </a>
 
       <nav class="nav__links" aria-label="Primary">
