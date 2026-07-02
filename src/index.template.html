@@ -95,6 +95,26 @@
       </div>
     </section>
 
+    <!-- ========================= REVIEWS ========================= -->
+    <section class="reviews" id="reviews">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <p class="eyebrow">What neighbors say</p>
+          <h2 class="section-title">Five stars, in their own words.</h2>
+        </div>
+        {{html.reviews}}
+        <p class="reviews__rating reveal">
+          <span class="stars" aria-hidden="true"></span>
+          Rated {{stats.ratingFmt}} on <a href="https://www.google.com/search?q=Lorca+Sanitation+Power+Washing+reviews" target="_blank" rel="noopener">Google</a>
+        </p>
+        <div class="reviews__stats reveal">
+          <span><strong>{{stats.homesCleanedFmt}}+</strong> homes</span>
+          <span><strong>{{stats.yearsInBusiness}} yrs</strong> local</span>
+          <span><strong>{{stats.ratingFmt}}</strong> stars</span>
+        </div>
+      </div>
+    </section>
+
     <!-- ========================= PROCESS ========================= -->
     <section class="process">
       <div class="container">
@@ -117,26 +137,6 @@
         </div>
         <div class="works__list">
           {{html.gallery}}
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================= REVIEWS ========================= -->
-    <section class="reviews" id="reviews">
-      <div class="container">
-        <div class="section-head section-head--center reveal">
-          <p class="eyebrow">What neighbors say</p>
-          <h2 class="section-title">Five stars, in their own words.</h2>
-        </div>
-        {{html.reviews}}
-        <p class="reviews__rating reveal">
-          <span class="stars" aria-hidden="true"></span>
-          Rated {{stats.ratingFmt}} on <a href="https://www.google.com/search?q=Lorca+Sanitation+Power+Washing+reviews" target="_blank" rel="noopener">Google</a>
-        </p>
-        <div class="reviews__stats reveal">
-          <span><strong>{{stats.homesCleanedFmt}}+</strong> homes</span>
-          <span><strong>{{stats.yearsInBusiness}} yrs</strong> local</span>
-          <span><strong>{{stats.ratingFmt}}</strong> stars</span>
         </div>
       </div>
     </section>
