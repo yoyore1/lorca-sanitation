@@ -59,15 +59,19 @@ export const SITE = {
   ],
 
   // Before / After comparison tiles (the signature slider) ------------------
-  // RENOVATION-ONLY now (owner is moving away from power washing). Each tile
-  // needs a REAL matched pair of images to work — do NOT add placeholder-only
-  // tiles (the slider would show two blank panels). Add kitchen/bath/flooring
-  // tiles here once real before+after photos exist. `after` = finished photo,
-  // `before` = the matching earlier photo.
+  // RENOVATION-ONLY (owner is moving away from power washing — no wash tiles
+  // here). `after` = finished photo, `before` = the matching earlier photo.
+  // kitchen/bathroom/flooring/landscaping are PLACEHOLDERS (no real photo file
+  // yet) — the branded fallback panel shows automatically (same img[data-ph]
+  // mechanism as the gallery/service cards) until real photos are dropped in
+  // under these exact filenames. See GPT prompts on file for each pair.
   beforeAfter: [
-    { id: "painting", label: "Interior Paint", after: "painting-after", before: "painting-before" },
-    { id: "deck",     label: "Deck Build",     after: "deck-after",     before: "deck-before" },
-    { id: "driveway", label: "Exterior",       after: "driveway-after", before: "driveway-before" },
+    { id: "painting",    label: "Interior Paint", after: "painting-after",    before: "painting-before" },
+    { id: "kitchen",     label: "Kitchen",        after: "kitchen-after",     before: "kitchen-before" },
+    { id: "bathroom",    label: "Bathroom",       after: "bathroom-after",    before: "bathroom-before" },
+    { id: "flooring",    label: "Flooring",       after: "flooring-after",    before: "flooring-before" },
+    { id: "deck",        label: "Deck Build",     after: "deck-after",        before: "deck-before" },
+    { id: "landscaping", label: "Landscaping",    after: "landscaping-after", before: "landscaping-before" },
   ],
 
   // Reviews — CONFIRM/replace with real reviews (placeholders) ---------------

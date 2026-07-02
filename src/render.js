@@ -210,14 +210,14 @@ function processCols(site) {
 // leads; exterior cleaning is one card at the end. `img` slugs without a real
 // file fall back to the branded placeholder panel until real photos arrive.
 const HOME_SERVICE_CARDS = [
-  { slug: "kitchen-renovations",  label: "Kitchen Renovations",      img: "svc-kitchen",     blurb: "Cabinets, counters, backsplashes and full remodels." },
-  { slug: "bathroom-renovations", label: "Bathroom Renovations",     img: "svc-bathroom",    blurb: "Vanities, tile, showers and tubs — start to finish." },
-  { slug: "interior-painting",    label: "Interior Painting",        img: "painting-after",  blurb: "Walls, ceilings and trim, cut in by hand." },
-  { slug: "flooring",             label: "Flooring",                 img: "svc-flooring",    blurb: "Hardwood, vinyl plank, laminate and tile." },
-  { slug: "basement-renovations", label: "Basement Renovations",     img: "svc-basement",    blurb: "Unused space turned into rooms you'll actually live in." },
-  { slug: "deck-services",        label: "Decks & Fences",           img: "deck-after",      blurb: "Built, restored, stained and sealed." },
-  { slug: "landscaping",          label: "Landscaping & Hardscaping", img: "svc-landscaping", blurb: "Gardens, sod, interlock patios and walkways." },
-  { slug: "pressure-washing",     label: "Exterior Cleaning",        img: "svc-exterior",    blurb: "Pressure & soft washing to finish the job." },
+  { slug: "kitchen-renovations",  label: "Kitchen Renovations",       img: "kitchen-after",     blurb: "Cabinets, counters, backsplashes and full remodels." },
+  { slug: "bathroom-renovations", label: "Bathroom Renovations",      img: "bathroom-after",    blurb: "Vanities, tile, showers and tubs — start to finish." },
+  { slug: "interior-painting",    label: "Interior Painting",         img: "painting-after",    blurb: "Walls, ceilings and trim, cut in by hand." },
+  { slug: "flooring",             label: "Flooring",                  img: "flooring-after",    blurb: "Hardwood, vinyl plank, laminate and tile." },
+  { slug: "basement-renovations", label: "Basement Renovations",      img: "svc-basement",      blurb: "Unused space turned into rooms you'll actually live in." },
+  { slug: "deck-services",        label: "Decks & Fences",            img: "deck-after",        blurb: "Built, restored, stained and sealed." },
+  { slug: "landscaping",          label: "Landscaping & Hardscaping", img: "landscaping-after", blurb: "Gardens, sod, interlock patios and walkways." },
+  { slug: "outdoor-structures",   label: "Outdoor Structures",        img: "svc-outdoor",       blurb: "Gazebos, pergolas, sheds and outdoor living spaces." },
 ];
 function homeServiceCards() {
   return HOME_SERVICE_CARDS.map(
