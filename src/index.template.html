@@ -44,8 +44,8 @@
             </a>
           </div>
           <p class="hero__trust">
-            <span class="stars" aria-label="{{stats.rating}} out of 5 stars"></span>
-            <span><strong>{{stats.rating}}</strong> · {{stats.homesCleanedFmt}}+ properties served · Fully insured since {{brand.foundedYear}}</span>
+            <span class="stars" aria-label="{{stats.ratingFmt}} out of 5 stars"></span>
+            <span><strong>{{stats.ratingFmt}}</strong> · {{stats.homesCleanedFmt}}+ properties served · Fully insured since {{brand.foundedYear}}</span>
           </p>
         </div>
 
@@ -126,17 +126,17 @@
       <div class="container">
         <div class="section-head section-head--center reveal">
           <p class="eyebrow">What neighbors say</p>
-          <h2 class="section-title">{{stats.reviewCount}} reviews. One recurring word: gasped.</h2>
+          <h2 class="section-title">{{stats.reviewCount}} reviews. One recurring word: recommend.</h2>
         </div>
         {{html.reviews}}
         <p class="reviews__rating reveal">
           <span class="stars" aria-hidden="true"></span>
-          Rated {{stats.rating}} across {{stats.reviewCount}} Google reviews
+          Rated {{stats.ratingFmt}} across {{stats.reviewCount}} <a href="https://www.google.com/search?q=Lorca+Sanitation+Power+Washing+reviews" target="_blank" rel="noopener">Google reviews</a>
         </p>
         <div class="reviews__stats reveal">
           <span><strong>{{stats.homesCleanedFmt}}+</strong> homes</span>
           <span><strong>{{stats.yearsInBusiness}} yrs</strong> local</span>
-          <span><strong>{{stats.rating}}</strong> stars</span>
+          <span><strong>{{stats.ratingFmt}}</strong> stars</span>
         </div>
       </div>
     </section>
@@ -210,7 +210,7 @@
             </div>
             <div class="field">
               <label for="f-address">Address or ZIP</label>
-              <input id="f-address" name="address" type="text" autocomplete="postal-code">
+              <input id="f-address" name="address" type="text" autocomplete="off">
             </div>
             <div class="field">
               <label for="f-service">What do you need done?</label>

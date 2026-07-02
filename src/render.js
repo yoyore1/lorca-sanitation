@@ -254,20 +254,21 @@ function beforeAfter(site) {
 }
 
 function reviews(site) {
-  const [f, b1, b2] = site.testimonials;
-  const sec = (t) => `
-    <figure class="rev__col">
+  const [featured, ...rest] = site.testimonials;
+  const metaLine = (t) => [t.meta, t.service].filter(Boolean).map(esc).join(" · ");
+  const card = (t) => `
+    <figure class="rev__card reveal">
       <div class="rev__stars" aria-label="${t.rating} out of 5 stars">${stars(t.rating)}</div>
       <blockquote>${esc(t.quote)}</blockquote>
-      <figcaption>${esc(t.name)} · ${esc(t.area)} · ${esc(t.service)}</figcaption>
+      <figcaption><span class="rev__name">${esc(t.name)}</span><span class="rev__meta">${metaLine(t)}</span></figcaption>
     </figure>`;
   return `
     <figure class="rev__feature reveal">
-      <div class="rev__stars rev__stars--lg" aria-label="${f.rating} out of 5 stars">${stars(f.rating)}</div>
-      <blockquote class="rev__quote">“${esc(f.quote)}”</blockquote>
-      <figcaption class="rev__by">${esc(f.name)} · ${esc(f.area)} · ${esc(f.service)}</figcaption>
+      <div class="rev__stars rev__stars--lg" aria-label="${featured.rating} out of 5 stars">${stars(featured.rating)}</div>
+      <blockquote class="rev__quote">“${esc(featured.quote)}”</blockquote>
+      <figcaption class="rev__by">${esc(featured.name)} · ${metaLine(featured)}</figcaption>
     </figure>
-    <div class="rev__cols reveal">${sec(b1)}${sec(b2)}</div>`;
+    <div class="rev__grid">${rest.map(card).join("")}</div>`;
 }
 
 function faqs(site) {
@@ -319,7 +320,7 @@ export function renderPage(template, site, opts = {}) {
   const year = new Date().getFullYear();
   const ext = {
     ...site,
-    stats: { ...site.stats, homesCleanedFmt: site.stats.homesCleaned.toLocaleString("en-US") },
+    stats: { ...site.stats, homesCleanedFmt: site.stats.homesCleaned.toLocaleString("en-US"), ratingFmt: site.stats.rating.toFixed(1) },
     assetVersion: assetVersion(),
     year,
   };
@@ -345,6 +346,10 @@ export function renderPage(template, site, opts = {}) {
   const clientSite = {
     brand: { name: site.brand.name, phone: site.brand.phone, phoneHref: site.brand.phoneHref, email: site.brand.email },
     stats: site.stats,
+    // Browser-facing key for the address-autocomplete field. Restricted by HTTP
+    // referrer in Google Cloud Console (not a secret — see .env.example). Omitted
+    // entirely when unset so main.js just skips autocomplete (plain text still works).
+    ...(process.env.GOOGLE_MAPS_BROWSER_KEY ? { mapsKey: process.env.GOOGLE_MAPS_BROWSER_KEY } : {}),
   };
   const nonceAttr = opts.nonce ? ` nonce="${opts.nonce}"` : "";
   const inject = `<script${nonceAttr}>window.SITE=${JSON.stringify(clientSite)};</script>`;

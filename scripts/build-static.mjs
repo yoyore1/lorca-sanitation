@@ -2,6 +2,7 @@
 // /services/ pages from config + the services catalog, copies assets, writes
 // robots.txt + sitemap.xml. (The estimate form is handled by the serverless
 // function in /api/estimate.js.)
+import "dotenv/config";
 import { mkdir, writeFile, cp, rm } from "node:fs/promises";
 import { readFileSync } from "node:fs";
 import path from "node:path";

@@ -26,12 +26,12 @@ export const SITE = {
     ownerName: "Lane & Colin",
   },
 
-  // Headline proof numbers — CONFIRM all (placeholders for a 2-yr business) ---
+  // Headline proof numbers ----------------------------------------------------
   stats: {
     yearsInBusiness: 2,
     homesCleaned: 250,                     // CONFIRM
-    rating: 5.0,                           // CONFIRM
-    reviewCount: 40,                       // CONFIRM
+    rating: 5.0,                           // REAL — Google (5.0★, 10 reviews)
+    reviewCount: 10,                       // REAL — Google
     responseHours: 24,
     guaranteeDays: 30,                     // CONFIRM
   },
@@ -67,11 +67,20 @@ export const SITE = {
   ],
 
   // Reviews — CONFIRM/replace with real reviews (placeholders) ---------------
+  // REAL reviews, transcribed from Lorca's Google Business Profile (5.0★, 10
+  // reviews). `meta` is the reviewer's own Google review count — real trust
+  // signal, used instead of a guessed city since Google doesn't expose one.
   testimonials: [
-    { name: "Sarah M.", area: "Toronto",     rating: 5, service: "Driveway",        quote: "I genuinely gasped when they finished the driveway. Years of grime gone in an afternoon. Polite, on time, and left everything spotless." },
-    { name: "David R.", area: "Mississauga", rating: 5, service: "Patio & Interlock", quote: "They got moss and weeds out of my paver joints I'd given up on. Looks better than the day it was installed." },
-    { name: "Priya K.", area: "Oakville",    rating: 5, service: "Siding & Soffit",  quote: "Quote came fast, price didn't change, and the results are unreal. Three neighbours have already asked for their number." },
-    { name: "Tom B.",   area: "Hamilton",    rating: 5, service: "Storefront",       quote: "They clean our storefront off-hours so we never lose a minute of business. Entrance looks sharp every day." },
+    { name: "Roberta Heino",   meta: "5 reviews on Google",  rating: 5, service: "Patio, Walkway & Driveway", quote: "I was so pleased by the service provided by Lorca Sanitation. They power washed my patio, walkway and driveway which was full of weeds and debris from the winter. The team of young men was professional and timely and the price was well worth it! I will definitely use them again in future." },
+    { name: "Brent Ambrose",   meta: "1 review on Google",   rating: 5, service: "House Soft Wash",           quote: "Had Lorca Sanitation soft wash my house and it came out way better than I expected. The siding looks better than I've ever seen it. Showed up on time and took care of business. Didn't miss a spot. We'll be seeing ya next year!" },
+    { name: "Ethan Fitzgerald", meta: "9 reviews on Google", rating: 5, service: "Backyard & Walkway",        quote: "These fellas helped me out a great deal — I was in the process of selling my house and they came and cleaned the backyard and my walkway and made my house look real nice for the realtor photos." },
+    { name: "CB 49",           meta: "10 reviews on Google", rating: 5, service: "Patio & Interlock",         quote: "Lorca Sanitation did a great job on our patio spring cleaning. They completed an interlock restoration leaving it looking brand new. I would highly recommend." },
+    { name: "Tyler O'Reilly",  meta: "1 review on Google",   rating: 5, service: null, quote: "They were very professional. Got their work done in a timely manner and left my place looking brand new again. I'll be bringing them back again next year. That's for sure!" },
+    { name: "Ava Dorie",       meta: "1 review on Google",   rating: 5, service: "Patio", quote: "Did a very good job helping clean my mom's patio for the summer season, would recommend." },
+    { name: "Hiam Santo",      meta: "1 review on Google",   rating: 5, service: null, quote: "Great customer service. The owners were friendly and handled everything smoothly :))" },
+    { name: "Naomi Lawrence",  meta: "6 reviews on Google",  rating: 5, service: null, quote: "Great service! Would 100% recommend." },
+    { name: "John Mulhall",    meta: "3 reviews on Google",  rating: 5, service: null, quote: "Quality and timely service!" },
+    { name: "Arielle Elise",   meta: "2 reviews on Google",  rating: 5, service: null, quote: "Great service, would recommend!!" },
   ],
 
   // Objection-handling FAQ ---------------------------------------------------

@@ -43,8 +43,8 @@
           </a>
         </div>
         <p class="hero__trust page-hero__trust">
-          <span class="stars" aria-label="{{stats.rating}} out of 5 stars"></span>
-          <span><strong>{{stats.rating}}</strong> · Fully insured · Serving {{brand.region}}</span>
+          <span class="stars" aria-label="{{stats.ratingFmt}} out of 5 stars"></span>
+          <span><strong>{{stats.ratingFmt}}</strong> · Fully insured · Serving {{brand.region}}</span>
         </p>
       </div>
     </section>
@@ -79,7 +79,7 @@
             </div>
             <div class="field">
               <label for="f-address">Address or ZIP</label>
-              <input id="f-address" name="address" type="text" autocomplete="postal-code">
+              <input id="f-address" name="address" type="text" autocomplete="off">
             </div>
             <div class="field">
               <label for="f-service">What do you need done?</label>

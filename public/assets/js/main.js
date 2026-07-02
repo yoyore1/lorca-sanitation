@@ -243,5 +243,36 @@
     });
   }
 
+  /* ---------- address autocomplete (Google Places) ---------- */
+  // Progressive enhancement only: the field is a normal text input and works
+  // fine with no key configured — this just upgrades it when window.SITE.mapsKey
+  // is present (see render.js / GOOGLE_MAPS_BROWSER_KEY).
+  const addressInput = $("#f-address");
+  if (addressInput && window.SITE?.mapsKey) {
+    const CALLBACK = "__lorcaPlacesReady";
+    window[CALLBACK] = () => {
+      try {
+        const gta = new google.maps.LatLngBounds(
+          { lat: 43.2, lng: -80.15 }, // SW — roughly Milton/Hamilton
+          { lat: 44.3, lng: -78.9 }   // NE — roughly Uxbridge/Georgina
+        );
+        new google.maps.places.Autocomplete(addressInput, {
+          fields: ["formatted_address"],
+          types: ["address"],
+          componentRestrictions: { country: "ca" },
+          bounds: gta,
+          strictBounds: false, // bias toward the GTA, don't exclude addresses outside it
+        });
+      } catch (e) {
+        console.warn("[places] autocomplete init failed:", e.message);
+      }
+    };
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(window.SITE.mapsKey)}&libraries=places&loading=async&callback=${CALLBACK}`;
+    script.async = true;
+    script.onerror = () => console.warn("[places] failed to load Google Maps script — address field stays plain text.");
+    document.head.appendChild(script);
+  }
+
   guardImages();
 })();
