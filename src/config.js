@@ -67,6 +67,7 @@ export const SITE = {
   beforeAfter: [
     { id: "painting", label: "Interior Paint", after: "painting-after", before: "painting-before" },
     { id: "deck",     label: "Deck Build",     after: "deck-after",     before: "deck-before" },
+    { id: "driveway", label: "Exterior",       after: "driveway-after", before: "driveway-before" },
   ],
 
   // Reviews — CONFIRM/replace with real reviews (placeholders) ---------------
