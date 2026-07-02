@@ -88,7 +88,7 @@
 
   /* safety: if the hero load-in animations are somehow blocked, force-show */
   setTimeout(() => {
-    $$(".hero__content > *, .hero__frame, .hero__card").forEach((el) => {
+    $$(".hero__content > *, .hero__frame").forEach((el) => {
       if (parseFloat(getComputedStyle(el).opacity) < 1) {
         el.style.animation = "none";
         el.style.opacity = "1";
