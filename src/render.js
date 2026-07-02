@@ -205,18 +205,45 @@ function processCols(site) {
     .join("");
 }
 
+// Curated, photo-forward service cards for the homepage (the full 23-category
+// directory still lives in the mega-menu, footer, and /services hub). Renovation
+// leads; exterior cleaning is one card at the end. `img` slugs without a real
+// file fall back to the branded placeholder panel until real photos arrive.
+const HOME_SERVICE_CARDS = [
+  { slug: "kitchen-renovations",  label: "Kitchen Renovations",      img: "svc-kitchen",     blurb: "Cabinets, counters, backsplashes and full remodels." },
+  { slug: "bathroom-renovations", label: "Bathroom Renovations",     img: "svc-bathroom",    blurb: "Vanities, tile, showers and tubs — start to finish." },
+  { slug: "interior-painting",    label: "Interior Painting",        img: "painting-after",  blurb: "Walls, ceilings and trim, cut in by hand." },
+  { slug: "flooring",             label: "Flooring",                 img: "svc-flooring",    blurb: "Hardwood, vinyl plank, laminate and tile." },
+  { slug: "basement-renovations", label: "Basement Renovations",     img: "svc-basement",    blurb: "Unused space turned into rooms you'll actually live in." },
+  { slug: "deck-services",        label: "Decks & Fences",           img: "deck-after",      blurb: "Built, restored, stained and sealed." },
+  { slug: "landscaping",          label: "Landscaping & Hardscaping", img: "svc-landscaping", blurb: "Gardens, sod, interlock patios and walkways." },
+  { slug: "pressure-washing",     label: "Exterior Cleaning",        img: "svc-exterior",    blurb: "Pressure & soft washing to finish the job." },
+];
+function homeServiceCards() {
+  return HOME_SERVICE_CARDS.map(
+    (c) => `
+      <a class="svccard reveal" href="/services/${c.slug}/">
+        <span class="svccard__media">${img(c.img, c.label, c.label, 640, 440)}</span>
+        <span class="svccard__body">
+          <span class="svccard__name">${esc(c.label)}</span>
+          <span class="svccard__blurb">${esc(c.blurb)}</span>
+        </span>
+      </a>`
+  ).join("");
+}
+
 function gallery(site) {
   return site.gallery
     .map(
       (g, i) => `
       <article class="work reveal${i % 2 ? " work--flip" : ""}">
         <figure class="work__media">
-          <span class="work__wipe">${img(g.img, `${g.surface} cleaned by ${site.brand.name} in ${g.area}`, g.surface, 1000, 640)}</span>
+          <span class="work__wipe">${img(g.img, `${g.surface} by ${site.brand.name} in ${g.area}`, g.surface, 1000, 640)}</span>
         </figure>
         <div class="work__caption">
           <span class="work__surface">${esc(g.surface)}</span>
           <span class="work__area">${esc(g.area)} · ${esc(g.time)}</span>
-          <p class="work__quote">“${esc(g.quote)}”</p>
+          <p class="work__quote">${esc(g.quote)}</p>
         </div>
       </article>`
     )
@@ -336,6 +363,7 @@ export function renderPage(template, site, opts = {}) {
     "html.footer": footerHtml(site, year),
     "html.dock": dockHtml(site),
     "html.categoryIndex": categoryIndex(),
+    "html.homeServiceCards": homeServiceCards(),
     "html.process": processCols(site),
     "html.gallery": gallery(site),
     "html.beforeAfter": beforeAfter(site),

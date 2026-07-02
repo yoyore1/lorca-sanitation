@@ -35,7 +35,7 @@
         <div class="hero__content">
           <p class="eyebrow">Home renovations · Exterior restoration · Serving {{brand.city}} &amp; the GTA</p>
           <h1 class="hero__title" data-hero-title>Your whole property, brought back to its best.</h1>
-          <p class="hero__sub">Inside: painting, flooring, kitchens, baths and finish carpentry. Outside: decks, fences, landscaping, hardscaping and our signature pressure washing. One careful crew, exact itemized quotes, and a {{stats.guaranteeDays}}-day guarantee on all of it.</p>
+          <p class="hero__sub">Kitchens, baths, painting, flooring and finish carpentry inside — decks, fences, landscaping and hardscaping outside. One careful crew, exact itemized quotes, and a {{stats.guaranteeDays}}-day guarantee on all of it.</p>
           <div class="hero__cta">
             <a class="btn btn--teal btn--lg" href="#estimate">Get My Free Estimate</a>
             <a class="btn btn--ghost btn--lg" href="tel:{{brand.phoneHref}}">
@@ -51,7 +51,7 @@
 
         <div class="hero__media">
           <figure class="hero__frame">
-            <img src="/assets/img/hero.jpg" alt="A home being professionally pressure-washed by {{brand.shortName}}" data-ph="Pressure washing" width="900" height="1100" fetchpriority="high" decoding="async">
+            <img src="/assets/img/hero.jpg" alt="A home renovated and restored by {{brand.shortName}}" data-ph="Renovated home" width="900" height="1100" fetchpriority="high" decoding="async">
           </figure>
         </div>
       </div>
@@ -83,14 +83,15 @@
     <!-- ====================== SERVICES DIRECTORY ====================== -->
     <section class="services" id="services">
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-head section-head--center reveal">
           <p class="eyebrow">What we do</p>
-          <h2 class="section-title">Two crafts.<br>One careful crew.</h2>
-          <p class="section-intro">Home renovations inside, exterior restoration outside. Open a service to see exactly what's included — every quote an exact, itemized price, never a vague range.</p>
+          <h2 class="section-title">Renovations, inside and out.</h2>
+          <p class="section-intro">From a full kitchen or basement build to a fresh coat of paint or a new deck — one careful crew, exact itemized quotes, and craftsmanship you can see.</p>
         </div>
-        <div class="services__dir">
-          {{html.categoryIndex}}
+        <div class="svc-cards">
+          {{html.homeServiceCards}}
         </div>
+        <p class="svc-cards__all reveal"><a href="/services/">See everything we do →</a></p>
       </div>
     </section>
 
@@ -131,8 +132,8 @@
     <section class="works">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Recent work</p>
-          <h2 class="section-title">Real surfaces. Real neighborhoods.</h2>
+          <p class="eyebrow">Recent projects</p>
+          <h2 class="section-title">Real homes across the GTA.</h2>
         </div>
         <div class="works__list">
           {{html.gallery}}

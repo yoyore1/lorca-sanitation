@@ -48,22 +48,23 @@ export const SITE = {
     { step: "04", title: "Final walkthrough", text: "We inspect every detail with you to make sure it meets our standard. Ongoing maintenance plans available too." },
   ],
 
-  // Recent-work gallery (alternating rows). img maps to /assets/img/<img>.jpg
+  // Recent-projects gallery (alternating rows). img maps to /assets/img/<img>.jpg
+  // Renovation-forward. Slugs prefixed `project-` are placeholders until real
+  // photos arrive (they show the branded fallback panel meanwhile).
   gallery: [
-    { img: "driveway",   surface: "Concrete driveway",   area: "Toronto",      time: "Cleaned in one afternoon", quote: "Years of grime gone. I genuinely gasped." },
-    { img: "patio",      surface: "Interlock patio",     area: "Mississauga",  time: "Single visit",             quote: "Weeds and buildup in the joints — completely gone. Looks new again." },
-    { img: "house-wash", surface: "Vinyl siding",        area: "Oakville",     time: "Single visit",             quote: "Quote came fast, price didn't change, results are unreal." },
-    { img: "commercial", surface: "Storefront exterior", area: "Hamilton",     time: "Off-hours clean",          quote: "Our entrance looks sharp every morning now. Customers notice." },
+    { img: "project-kitchen",  surface: "Kitchen renovation",  area: "Toronto",     time: "Full remodel",     quote: "New cabinets, quartz counters and a full tile backsplash." },
+    { img: "project-bathroom", surface: "Bathroom renovation", area: "Mississauga", time: "Gut & rebuild",    quote: "Walk-in tile shower, new vanity, waterproofed and finished bright." },
+    { img: "painting-after",   surface: "Interior repaint",    area: "Oakville",    time: "Whole main floor", quote: "Walls, ceilings and trim refreshed to a clean, even finish." },
+    { img: "deck-after",       surface: "Deck build & stain",  area: "Burlington",  time: "Built to last",    quote: "New boards, railings and a rich sealed stain, ready for summer." },
   ],
 
   // Before / After comparison tiles (the signature slider) ------------------
-  // `after` = the clean photo, `before` = the matching dirty photo. When
-  // `before` is omitted, the slider fakes it with a CSS grime filter.
+  // Renovation-first now; one exterior pair kept. `after` = the finished photo,
+  // `before` = the matching earlier photo.
   beforeAfter: [
-    { id: "driveway", label: "Driveway",        after: "driveway-after", before: "driveway-before" },
-    { id: "house",    label: "Siding",          after: "house-wash",     before: "house-wash-before" },
-    { id: "painting", label: "Interior Paint",  after: "painting-after", before: "painting-before" },
-    { id: "deck",     label: "Deck Staining",   after: "deck-after",     before: "deck-before" },
+    { id: "painting", label: "Interior Paint", after: "painting-after", before: "painting-before" },
+    { id: "deck",     label: "Deck Staining",  after: "deck-after",     before: "deck-before" },
+    { id: "driveway", label: "Exterior Wash",  after: "driveway-after", before: "driveway-before" },
   ],
 
   // Reviews — CONFIRM/replace with real reviews (placeholders) ---------------
