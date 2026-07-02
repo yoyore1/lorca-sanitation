@@ -52,8 +52,8 @@ export const SITE = {
   // Renovation-forward. Slugs prefixed `project-` are placeholders until real
   // photos arrive (they show the branded fallback panel meanwhile).
   gallery: [
-    { img: "project-kitchen",  surface: "Kitchen renovation",  area: "Toronto",     time: "Full remodel",     quote: "New cabinets, quartz counters and a full tile backsplash." },
-    { img: "project-bathroom", surface: "Bathroom renovation", area: "Mississauga", time: "Gut & rebuild",    quote: "Walk-in tile shower, new vanity, waterproofed and finished bright." },
+    { img: "kitchen-after",  surface: "Kitchen renovation",  area: "Toronto",     time: "Full remodel",     quote: "New cabinets, quartz counters and a full tile backsplash." },
+    { img: "bathroom-after", surface: "Bathroom renovation", area: "Mississauga", time: "Gut & rebuild",    quote: "Walk-in tile shower, new vanity, waterproofed and finished bright." },
     { img: "painting-after",   surface: "Interior repaint",    area: "Oakville",    time: "Whole main floor", quote: "Walls, ceilings and trim refreshed to a clean, even finish." },
     { img: "deck-after",       surface: "Deck build & stain",  area: "Burlington",  time: "Built to last",    quote: "New boards, railings and a rich sealed stain, ready for summer." },
   ],
