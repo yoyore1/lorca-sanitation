@@ -40,10 +40,10 @@ const PHONE_ICON = `<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path
 
 // Icon + real HTML text (not the raster logo's fine-print tagline, which pixelates
 // into illegibility once scaled down for a navbar/footer) — stays crisp at any size.
+// The real, designed Lorca logo as a single unit (icon + wordmark + tagline) —
+// his own asset, not a reconstruction. `light` = the dark-footer variant.
 function brandMark(site, { light = false } = {}) {
-  const suffix = site.brand.name.replace(site.brand.shortName, "").trim();
-  return `<img class="brand__icon${light ? " brand__icon--light" : ""}" src="/assets/img/logo-icon.png" alt="" width="500" height="194" decoding="async">
-        <span class="brand__text${light ? " brand__text--light" : ""}"><strong>${esc(site.brand.shortName)}</strong><em>${esc(suffix)}</em></span>`;
+  return `<img class="brand__logo${light ? " brand__logo--light" : ""}" src="/assets/img/logo.png" alt="${esc(site.brand.name)}" width="851" height="552" decoding="async">`;
 }
 
 function headerHtml(site) {
@@ -256,19 +256,25 @@ function beforeAfter(site) {
 function reviews(site) {
   const [featured, ...rest] = site.testimonials;
   const metaLine = (t) => [t.meta, t.service].filter(Boolean).map(esc).join(" · ");
-  const card = (t) => `
-    <figure class="rev__card reveal">
+  const card = (t, hidden = false) => `
+    <figure class="rev__card"${hidden ? " aria-hidden=\"true\"" : ""}>
       <div class="rev__stars" aria-label="${t.rating} out of 5 stars">${stars(t.rating)}</div>
       <blockquote>${esc(t.quote)}</blockquote>
       <figcaption><span class="rev__name">${esc(t.name)}</span><span class="rev__meta">${metaLine(t)}</span></figcaption>
     </figure>`;
+  // A continuously-scrolling belt: the set is rendered twice (the 2nd copy is
+  // aria-hidden) so the CSS animation can loop seamlessly. Never states a count.
+  const belt = rest.map((t) => card(t)).join("");
+  const beltDup = rest.map((t) => card(t, true)).join("");
   return `
     <figure class="rev__feature reveal">
       <div class="rev__stars rev__stars--lg" aria-label="${featured.rating} out of 5 stars">${stars(featured.rating)}</div>
       <blockquote class="rev__quote">“${esc(featured.quote)}”</blockquote>
       <figcaption class="rev__by">${esc(featured.name)} · ${metaLine(featured)}</figcaption>
     </figure>
-    <div class="rev__grid">${rest.map(card).join("")}</div>`;
+    <div class="rev__marquee reveal" role="group" aria-label="More customer reviews">
+      <div class="rev__track">${belt}${beltDup}</div>
+    </div>`;
 }
 
 function faqs(site) {
