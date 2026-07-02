@@ -402,10 +402,10 @@ ul, ol { list-style: none; padding: 0; }
 
 /* ========================= REVIEWS ========================= */
 .reviews { padding-block: var(--section-y); background: var(--bg-alt); }
-.rev__feature { max-width: 30ch; margin-inline: auto; text-align: center; }
+.rev__feature { max-width: 46ch; margin-inline: auto; text-align: center; }
 .rev__stars { color: var(--star); }
 .rev__stars--lg { font-size: 1.3rem; margin-bottom: 1.3rem; }
-.rev__quote { font-family: var(--display); font-style: italic; font-weight: 420; font-size: var(--step-2); line-height: 1.32; letter-spacing: -0.01em; color: var(--ink); }
+.rev__quote { font-family: var(--display); font-style: italic; font-weight: 420; font-size: var(--step-1); line-height: 1.4; letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
 .rev__by { margin-top: 1.4rem; font-size: .85rem; font-weight: 600; letter-spacing: .02em; color: var(--muted); }
 /* auto-scrolling review belt — set rendered twice for a seamless loop */
 .rev__marquee { margin-top: clamp(3rem, 2rem + 3vw, 5rem); overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
