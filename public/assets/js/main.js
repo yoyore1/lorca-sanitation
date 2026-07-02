@@ -85,6 +85,17 @@
   const reveal = $$(".reveal");
   const heroTitle = $("[data-hero-title]");
   if (heroTitle) requestAnimationFrame(() => heroTitle.classList.add("is-in"));
+
+  /* safety: if the hero load-in animations are somehow blocked, force-show */
+  setTimeout(() => {
+    $$(".hero__content > *, .hero__frame, .hero__card").forEach((el) => {
+      if (parseFloat(getComputedStyle(el).opacity) < 1) {
+        el.style.animation = "none";
+        el.style.opacity = "1";
+        el.style.transform = "none";
+      }
+    });
+  }, 2400);
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver((entries, obs) => {
       entries.forEach((en) => {

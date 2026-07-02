@@ -34,7 +34,7 @@
       <div class="container hero__inner">
         <div class="hero__content">
           <p class="eyebrow">Home renovations · Exterior restoration · Serving {{brand.city}} &amp; the GTA</p>
-          <h1 class="hero__title" data-hero-title>Your whole property, brought back to its best.</h1>
+          <h1 class="hero__title" data-hero-title>Your whole property, brought back to <em class="hero__accent">its best.</em></h1>
           <p class="hero__sub">Kitchens, baths, painting, flooring and finish carpentry inside — decks, fences, landscaping and hardscaping outside. One careful crew, exact itemized quotes, and a {{stats.guaranteeDays}}-day guarantee on all of it.</p>
           <div class="hero__cta">
             <a class="btn btn--teal btn--lg" href="#estimate">Get My Free Estimate</a>
@@ -53,6 +53,10 @@
           <figure class="hero__frame">
             <img src="/assets/img/hero-deck-wide.jpg" alt="A newly built backyard cedar deck by {{brand.shortName}}" data-ph="Deck build" width="1240" height="930" fetchpriority="high" decoding="async">
           </figure>
+          <div class="hero__card" aria-hidden="true">
+            <span class="hero__card-stars">★★★★★</span>
+            <span class="hero__card-text"><strong>{{stats.ratingFmt}}</strong> on Google</span>
+          </div>
         </div>
       </div>
     </section>
