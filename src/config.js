@@ -59,21 +59,18 @@ export const SITE = {
   ],
 
   // Before / After comparison tiles (the signature slider) ------------------
-  // RENOVATION-ONLY (owner is moving away from power washing — no wash tiles
-  // here). `after` = finished photo, `before` = the matching earlier photo.
-  // kitchen/bathroom/flooring/landscaping are PLACEHOLDERS (no real photo file
-  // yet) — the branded fallback panel shows automatically (same img[data-ph]
-  // mechanism as the gallery/service cards) until real photos are dropped in
-  // under these exact filenames. See GPT prompts on file for each pair.
-  // 4 is a realistic count for a real crew's portfolio (6 read as staged).
-  // Painting + Deck are REAL pairs now; Kitchen + Bathroom are placeholders
-  // (branded fallback until real photos land). Flooring/Landscaping stay as
-  // service-card cover shots only — not before/after tiles.
+  // RENOVATION-ONLY (owner is moving away from power washing — no wash tiles).
+  // `after` = finished photo, `before` = the matching earlier photo. All six
+  // are REAL matched pairs now (files in public/assets/img, 1040x650). Each new
+  // tile needs a real pair — don't add placeholder-only tiles (slider would
+  // show two blank panels).
   beforeAfter: [
-    { id: "painting", label: "Interior Paint", after: "painting-after", before: "painting-before" },
-    { id: "kitchen",  label: "Kitchen",        after: "kitchen-after",  before: "kitchen-before" },
-    { id: "bathroom", label: "Bathroom",       after: "bathroom-after", before: "bathroom-before" },
-    { id: "deck",     label: "Deck Build",     after: "deck-after",     before: "deck-before" },
+    { id: "painting",    label: "Interior Paint", after: "painting-after",    before: "painting-before" },
+    { id: "kitchen",     label: "Kitchen",        after: "kitchen-after",     before: "kitchen-before" },
+    { id: "bathroom",    label: "Bathroom",       after: "bathroom-after",    before: "bathroom-before" },
+    { id: "flooring",    label: "Flooring",       after: "flooring-after",    before: "flooring-before" },
+    { id: "deck",        label: "Deck Build",     after: "deck-after",        before: "deck-before" },
+    { id: "landscaping", label: "Landscaping",    after: "landscaping-after", before: "landscaping-before" },
   ],
 
   // Reviews — CONFIRM/replace with real reviews (placeholders) ---------------
