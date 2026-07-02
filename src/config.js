@@ -59,12 +59,14 @@ export const SITE = {
   ],
 
   // Before / After comparison tiles (the signature slider) ------------------
-  // Renovation-first now; one exterior pair kept. `after` = the finished photo,
+  // RENOVATION-ONLY now (owner is moving away from power washing). Each tile
+  // needs a REAL matched pair of images to work — do NOT add placeholder-only
+  // tiles (the slider would show two blank panels). Add kitchen/bath/flooring
+  // tiles here once real before+after photos exist. `after` = finished photo,
   // `before` = the matching earlier photo.
   beforeAfter: [
     { id: "painting", label: "Interior Paint", after: "painting-after", before: "painting-before" },
-    { id: "deck",     label: "Deck Staining",  after: "deck-after",     before: "deck-before" },
-    { id: "driveway", label: "Exterior Wash",  after: "driveway-after", before: "driveway-before" },
+    { id: "deck",     label: "Deck Build",     after: "deck-after",     before: "deck-before" },
   ],
 
   // Reviews — CONFIRM/replace with real reviews (placeholders) ---------------
